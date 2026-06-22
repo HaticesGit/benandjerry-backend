@@ -16,4 +16,9 @@ const deleteOrder = async (req, res) => {
     res.json({ message: "Order deleted" });
 };
 
-module.exports = { getOrders, createOrder,deleteOrder};
+const getOrderById = async (req, res) => {
+    const order = await Order.findById(req.params.id);
+    res.json(order);
+};
+
+module.exports = { getOrders, createOrder,deleteOrder, getOrderById};
