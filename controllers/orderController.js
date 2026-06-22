@@ -21,4 +21,14 @@ const getOrderById = async (req, res) => {
     res.json(order);
 };
 
-module.exports = { getOrders, createOrder,deleteOrder, getOrderById};
+const updateOrderStatus = async (req, res) => {
+    const order = await Order.findByIdAndUpdate(
+    req.params.id,
+    { status: req.body.status },
+    { new: true }
+  );
+
+  res.json(order);
+};
+
+module.exports = { getOrders, createOrder,deleteOrder, getOrderById, updateOrderStatus};
